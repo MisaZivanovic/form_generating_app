@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Configure Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='config_styles.css') }}">
+    <script>
+        function addField() {
+            const container = document.getElementById('field-container');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'field_names';
+            input.placeholder = 'Field Name';
+            input.required = true;
+            container.appendChild(input);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Configure Your Form</h1>
+        <form method="post" action="{{ url_for('generate_form') }}">
+            <div id="field-container">
+                <input type="text" name="field_names" placeholder="Field Name" required>
+            </div>
+            <button type="button" onclick="addField()">Add Another Field</button>
+            <button type="submit">Generate Form</button>
+        </form>
+    </div>
+</body>
+</html>
